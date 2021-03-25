@@ -12,7 +12,7 @@ def pushToGSheet(location, language):
     scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/spreadsheets','https://www.googleapis.com/auth/drive.file','https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_name("EuropeanColl_Creds.json", scope)
     client = gspread.authorize(creds)
-    sheet = client.open('EUCOLLPyton').worksheet('JSON_Raw_Py')  # Open the spreadhseet
+    sheet = client.open('EUCOLLPython').worksheet('JSON_Raw_Py')  # Open the spreadhseet
     #data = sheet.get_all_records()
 
     files = [f for f in os.listdir(location) if os.path.isfile(os.path.join(location,f))]
@@ -42,7 +42,7 @@ def pushToGSheet(location, language):
                 column1.append(Cell(row,1, value=''.join(general_functions.calcEpoch(media_info.tracks[0].file_last_modification_date))))
                 column2.append(Cell(row,2, value=''.join(audio)))
                 column3.append(Cell(row,3, value=''.join(str('CMT-'+language+'-Vendor'))))
-                column4.append(Cell(row,4, value=''.join(general_functions.generate_UUID(audio, language))))
+                column4.append(Cell(row,4, value=''.join(general_functions.generate_UUID(audio[0:4], language))))
                 column5.append(Cell(row,5, value=''.join(track.format_settings__endianness)))
                 column6.append(Cell(row,6, value=''.join(str(track.channel_s))))
                 column7.append(Cell(row,7, value=''.join(track.commercial_name+'_'+track.format_settings__sign.upper())))
@@ -76,7 +76,8 @@ def pushToGSheet(location, language):
     sheet.update_cells(column14)
     sheet.update_cells(column15)
     sheet.update_cells(column16)
-    
+
+    print('### 終わった - Owatta! ###') 
 
 def getMediaInfo():
 
