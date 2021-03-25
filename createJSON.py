@@ -20,8 +20,8 @@ def getData():
   sheet = client.open('EUCOLLPython').worksheet('JSON_Raw_Py')
 
   df = pd.DataFrame(sheet.get_all_records())
-  print(df)
-  
+  #print(df)
+  print('Getting Data from Gsheet ' + sheet.title) 
   createJSONs(df)
 
 def createJSONs(full_data):

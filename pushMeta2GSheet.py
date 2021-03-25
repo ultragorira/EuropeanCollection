@@ -1,10 +1,12 @@
 #Author: Loris De Luca
 import os
+import time
 from pymediainfo import MediaInfo
 import gspread
 from gspread.models import Cell
 from oauth2client.service_account import ServiceAccountCredentials
 import functions as general_functions
+import createJSON as cjson
 
 
 def pushToGSheet(location, language):
@@ -78,6 +80,9 @@ def pushToGSheet(location, language):
     sheet.update_cells(column16)
 
     print('### 終わった - Owatta! ###') 
+    print('Launching JSON creation!')
+    time.sleep(5)
+    cjson.getData()
 
 def getMediaInfo():
 
