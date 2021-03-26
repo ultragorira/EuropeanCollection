@@ -29,7 +29,7 @@ def createJSONs(full_data):
   json_list = []
   fileCount = 0
   # Iterate through each row in worksheet and fetch values into dict
-  for rownum in range(2, len(full_data.index)):
+  for rownum in range(len(full_data.index)):
       #data = OrderedDict()
       data = {}
       #row_values = full_data.row_values(rownum)
@@ -53,11 +53,11 @@ def createJSONs(full_data):
       data['audioFormat']['format'] = full_data['format'][rownum]
       data['audioFormat']['sourceType'] = full_data['sourceType'][rownum]
       data['sessionInfo'] = {}
-      data['sessionInfo']['language_collected'] = full_data['language_collected'][rownum]
-      data['sessionInfo']['age_range'] = full_data['age_range'][rownum]
+      data['sessionInfo']['languageCollected'] = full_data['language_collected'][rownum]
+      data['sessionInfo']['ageRange'] = full_data['age_range'][rownum]
       data['sessionInfo']['gender'] = full_data['gender'][rownum]
-      data['sessionInfo']['country_lived'] = full_data['country_lived'][rownum]
-      data['sessionInfo']['language_spoken_daily'] = full_data['language_spoken_daily'][rownum]
+      data['sessionInfo']['countryLived'] = full_data['country_lived'][rownum]
+      data['sessionInfo']['languageSpokenDaily'] = full_data['language_spoken_daily'][rownum]
       data['sessionInfo']['primaryMicrophone'] = full_data['primaryMicrophone'][rownum]
       data['transcription'] = {}
       data['transcription']['audioDurationMillis'] = int(full_data['audioDurationMillis'][rownum])
@@ -72,10 +72,10 @@ def createJSONs(full_data):
       data['transcription']['intent'] = full_data['intent'][rownum]
       data['additionalMetadata'] = {}
       data['additionalMetadata']['annotation'] = "null"
-      data['additionalMetadata']['dialect'] = full_data['dialect'][rownum]
-      data['additionalMetadata']['speakerId'] = full_data['speakerId'][rownum]
       data['additionalMetadata']['phoneModel'] = full_data['phoneModel'][rownum]
       data['additionalMetadata']['phoneBrand'] = full_data['phoneBrand'][rownum]
+      data['additionalMetadata']['speakerId'] = full_data['speakerId'][rownum]
+      data['additionalMetadata']['dialect'] = full_data['dialect'][rownum]
       data['additionalMetadata']['backgroundNoiseLevelInDb'] = full_data['backgroundNoiseLevelInDb'][rownum]
       data['additionalMetadata']['operatingSystem'] = full_data['operatingSystem'][rownum]
       data['additionalMetadata']['backgroundNoise'] = full_data['backgroundNoise'][rownum]
