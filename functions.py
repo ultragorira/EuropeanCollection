@@ -32,3 +32,8 @@ def calcEpoch(timeFromMediaInfo):
     datetime_object = datetime.strptime(timeFromMediaInfo.replace('UTC ',''), '%Y-%m-%d %H:%M:%S.%f')
     epochTime = int(round(datetime.timestamp(datetime_object)* 1000))
     return(str(epochTime))
+
+
+
+if __name__=="__main__":
+    main()
