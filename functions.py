@@ -1,4 +1,5 @@
 # Author: Loris De Luca
+# Common functions
 
 import os
 import glob
