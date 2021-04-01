@@ -9,7 +9,7 @@ import functions as general_functions
 import createJSON as cjson
 
 
-def pushToGSheet(location, language):
+def pushToGSheet(location, language, segment_lenght):
     #Google Sheet
     scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/spreadsheets','https://www.googleapis.com/auth/drive.file','https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_name("EuropeanColl_Creds.json", scope)
@@ -56,7 +56,8 @@ def pushToGSheet(location, language):
                 column13.append(Cell(row,13, value=''.join(str.upper(media_info.tracks[0].file_extension))))
                 column14.append(Cell(row,14,value=''.join('CTM')))
                 column15.append(Cell(row,15, value=''.join(language)))
-                column16.append(Cell(row,39, value=''.join(str(general_functions.calculateSNR(os.path.join(location,audio))))))
+                column16.append(Cell(row,39, value=''.join(str(general_functions.calculateSNR(os.path.join(location,audio),segment_lenght)))))
+
             
                 row += 1  
                 
@@ -89,7 +90,8 @@ def getMediaInfo():
     workingFolder = input("Provide Loc of audio files: ")
     language = input('LANGUAGE:\n 1.de-DE\n 2.en-IN\n')
     language = 'de-DE' if language == '1' else 'en-IN'
-    pushToGSheet(workingFolder,language)
+    segment = input('How long segment: ')
+    pushToGSheet(workingFolder,language, segment)
 
 
 # Run the file standalone.

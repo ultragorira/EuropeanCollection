@@ -12,10 +12,10 @@ workingFolder = os.path.dirname(__file__)
 #Change below depending on where is your SOX
 soxLocation = r'C:\Projects\Amazon\RoundVIII\SOX\sox.exe'     
 
-def calculateSNR(path):
+def calculateSNR(path, segment_lenght):
     
     if (path.endswith('.wav')):
-        cmd = subprocess.Popen([soxLocation, path, '-n', 'stats','-w', '0.08'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        cmd = subprocess.Popen([soxLocation, path, '-n', 'stats','-w', str(segment_lenght)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         stderrdata, stdoutdata = cmd.communicate()
         SNR = round(float(stdoutdata.decode('utf-8').split('\r\n')[5].split(' ')[-1])-float(stdoutdata.decode('utf-8').split('\r\n')[6].split(' ')[-1]))
         #print ('File {file} has {snr} value for SNR'.format(file=filename, snr=SNR))
