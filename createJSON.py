@@ -65,8 +65,8 @@ def createJSONs(full_data):
       data['transcription']['domain'] = full_data['domain'][rownum]
       data['transcription']['id'] = str(full_data['id'][rownum])
       data['transcription']['phrase'] = full_data['phrase'][rownum]
-      data['transcription']['startEndpoint'] = full_data['startEndpoint'][rownum]
-      data['transcription']['stopEndpoint'] = full_data['stopEndpoint'][rownum]
+      data['transcription']['startEndpoint'] = int(full_data['startEndpoint'][rownum])
+      data['transcription']['stopEndpoint'] = int(full_data['stopEndpoint'][rownum])
       data['transcription']['type'] = full_data['type'][rownum]
       data['transcription']['qualityChecks'] = {}
       data['transcription']['wakeword'] = full_data['wakeword'][rownum]

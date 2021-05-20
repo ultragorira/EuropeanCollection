@@ -82,7 +82,7 @@ def pushToGSheet(location, language, segment_lenght):
 
     print('### 終わった - Owatta! ###') 
     print('Launching JSON creation!')
-    time.sleep(5)
+    time.sleep(10)
     cjson.getData()
 
 def getMediaInfo():
